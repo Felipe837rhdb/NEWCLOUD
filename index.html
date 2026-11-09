@@ -1,0 +1,641 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <title>NuvionCloud</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #101827;
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 22px 7%;
+      border-bottom: 1px solid #263449;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .cloud {
+      color: #3996ff;
+      margin-right: 8px;
+    }
+
+    .brand span:last-child {
+      color: #3996ff;
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: auto;
+      padding: 65px 20px;
+      display: grid;
+      grid-template-columns: 1fr 390px;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 43px;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #3996ff;
+    }
+
+    .hero p {
+      color: #aab8ca;
+      line-height: 1.7;
+      font-size: 16px;
+      max-width: 480px;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .feature {
+      background: #172337;
+      border: 1px solid #293d58;
+      padding: 12px 15px;
+      border-radius: 10px;
+      color: #c5d3e5;
+      font-size: 13px;
+    }
+
+    .panel {
+      background: #172337;
+      border: 1px solid #2b3d55;
+      border-radius: 17px;
+      padding: 28px;
+      box-shadow: 0 15px 45px #0003;
+    }
+
+    .panel h2 {
+      font-size: 23px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #93a4ba;
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 13px;
+      background: #101827;
+      color: white;
+      border: 1px solid #344861;
+      border-radius: 9px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    input:focus {
+      border-color: #3996ff;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 9px;
+      background: #3996ff;
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    button:hover {
+      opacity: .9;
+    }
+
+    button:disabled {
+      opacity: .5;
+      cursor: wait;
+    }
+
+    .google {
+      background: #26374e;
+      border: 1px solid #40536c;
+      margin-top: 12px;
+    }
+
+    .switch {
+      text-align: center;
+      color: #aab8ca;
+      font-size: 13px;
+      margin-top: 20px;
+    }
+
+    .switch a {
+      color: #3996ff;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    #message {
+      margin-top: 15px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #ffb5b5;
+      overflow-wrap: anywhere;
+    }
+
+    .success {
+      color: #73e5a1 !important;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .user-panel {
+      text-align: center;
+    }
+
+    .user-icon {
+      width: 65px;
+      height: 65px;
+      margin: 0 auto 15px;
+      background: #203b5e;
+      color: #3996ff;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+    }
+
+    .user-email {
+      color: #aab8ca;
+      font-size: 13px;
+      margin: 12px 0 20px;
+      overflow-wrap: anywhere;
+    }
+
+    .countdown {
+      margin-top: 38px;
+      padding: 20px;
+      background: #172337;
+      border: 1px solid #293d58;
+      border-radius: 13px;
+      max-width: 480px;
+    }
+
+    .countdown h3 {
+      font-size: 14px;
+      color: #aab8ca;
+      margin-bottom: 12px;
+    }
+
+    #timer {
+      font-size: 25px;
+      font-weight: bold;
+      color: #3996ff;
+      font-variant-numeric: tabular-nums;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #718198;
+      font-size: 12px;
+      border-top: 1px solid #263449;
+    }
+
+    @media(max-width: 800px) {
+      .container {
+        grid-template-columns: 1fr;
+        padding-top: 40px;
+        gap: 35px;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .panel {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">
+    <span class="cloud">☁</span>Nuvion<span>Cloud</span>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+    <div class="hero">
+      <h1>Seu computador.<br>
+        <span>Na nuvem.</span>
+      </h1>
+
+      <p>
+        Conheça o NuvionCloud, uma nova experiência
+        de computação em nuvem. Acesse sua conta e
+        prepare-se para o lançamento.
+      </p>
+
+      <div class="features">
+        <div class="feature">☁ Computação em nuvem</div>
+        <div class="feature">🔒 Acesso seguro</div>
+        <div class="feature">💻 Acesso online</div>
+      </div>
+
+      <div class="countdown">
+        <h3>LANÇAMENTO DO NUVIONCLOUD</h3>
+        <div id="timer">Calculando...</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+
+    <div id="authArea">
+
+      <div id="loginForm">
+        <h2>Bem-vindo de volta</h2>
+        <p class="subtitle">Entre na sua conta NuvionCloud.</p>
+
+        <form id="login">
+          <input
+            type="email"
+            id="loginEmail"
+            placeholder="Seu e-mail"
+            required
+          >
+
+          <input
+            type="password"
+            id="loginPassword"
+            placeholder="Sua senha"
+            required
+          >
+
+          <button type="submit" id="loginButton">
+            Entrar
+          </button>
+        </form>
+
+        <button class="google" id="googleButton" type="button">
+          Entrar com Google
+        </button>
+
+        <div class="switch">
+          Não tem uma conta?
+          <a id="showRegister">Criar conta</a>
+        </div>
+      </div>
+
+      <div id="registerForm" class="hidden">
+        <h2>Criar conta</h2>
+        <p class="subtitle">Cadastre-se no NuvionCloud.</p>
+
+        <form id="register">
+          <input
+            type="email"
+            id="registerEmail"
+            placeholder="Seu e-mail"
+            required
+          >
+
+          <input
+            type="password"
+            id="registerPassword"
+            placeholder="Crie uma senha (mínimo 6 caracteres)"
+            minlength="6"
+            required
+          >
+
+          <button type="submit" id="registerButton">
+            Criar minha conta
+          </button>
+        </form>
+
+        <div class="switch">
+          Já tem uma conta?
+          <a id="showLogin">Fazer login</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="userArea" class="user-panel hidden">
+      <div class="user-icon">☁</div>
+      <h2>Você está conectado!</h2>
+      <p class="subtitle">Sua conta NuvionCloud está ativa.</p>
+
+      <div class="user-email" id="userEmail"></div>
+
+      <button id="logoutButton">
+        Sair da conta
+      </button>
+    </div>
+
+    <div id="message" role="status"></div>
+
+  </section>
+
+</main>
+
+<footer>
+  © 2026 NuvionCloud — Todos os direitos reservados.
+</footer>
+
+<script type="module">
+
+  // FIREBASE
+  import { initializeApp } from
+    "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
+
+  import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    GoogleAuthProvider,
+    signInWithPopup,
+    signOut,
+    onAuthStateChanged
+  } from
+    "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
+
+  import {
+    getFirestore,
+    doc,
+    setDoc,
+    serverTimestamp
+  } from
+    "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
+
+
+  // CONFIGURAÇÃO DO SEU PROJETO
+  const firebaseConfig = {
+    apiKey: "AIzaSyD-fg6OjiInXJBZJwfPF7iJ-6ZY6_CzSxY",
+    authDomain: "nuvioncloud.firebaseapp.com",
+    projectId: "nuvioncloud",
+    storageBucket: "nuvioncloud.firebasestorage.app",
+    messagingSenderId: "238265616692",
+    appId: "1:238265616692:web:88d6c38c8443169ffd7d61"
+  };
+
+
+  // INICIALIZAÇÃO
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+  const googleProvider = new GoogleAuthProvider();
+
+
+  // ELEMENTOS
+  const loginForm = document.getElementById("loginForm");
+  const registerForm = document.getElementById("registerForm");
+  const authArea = document.getElementById("authArea");
+  const userArea = document.getElementById("userArea");
+  const message = document.getElementById("message");
+
+
+  // MENSAGENS
+  function showMessage(text, success = false) {
+    message.textContent = text;
+    message.className = success ? "success" : "";
+  }
+
+
+  // TRADUZIR ERROS
+  function translateError(error) {
+    const errors = {
+      "auth/email-already-in-use": "Este e-mail já está cadastrado.",
+      "auth/invalid-email": "E-mail inválido.",
+      "auth/weak-password": "A senha precisa ter pelo menos 6 caracteres.",
+      "auth/invalid-credential": "E-mail ou senha incorretos.",
+      "auth/user-disabled": "Esta conta foi desativada.",
+      "auth/popup-closed-by-user": "A janela do Google foi fechada.",
+      "auth/popup-blocked": "O navegador bloqueou a janela do Google.",
+      "auth/network-request-failed": "Verifique sua conexão com a internet."
+    };
+
+    return errors[error.code] || "Não foi possível concluir. Tente novamente.";
+  }
+
+
+  // SALVAR USUÁRIO NO FIRESTORE
+  async function saveUser(user) {
+    if (!user || !user.email) {
+      throw new Error("Não foi possível obter o e-mail da conta.");
+    }
+
+    await setDoc(doc(db, "users", user.uid), {
+      uid: user.uid,
+      email: user.email,
+      lastLogin: serverTimestamp()
+    }, {
+      merge: true
+    });
+  }
+
+
+  // ALTERNAR PARA CADASTRO
+  document.getElementById("showRegister").addEventListener("click", () => {
+    loginForm.classList.add("hidden");
+    registerForm.classList.remove("hidden");
+    showMessage("");
+  });
+
+
+  // ALTERNAR PARA LOGIN
+  document.getElementById("showLogin").addEventListener("click", () => {
+    registerForm.classList.add("hidden");
+    loginForm.classList.remove("hidden");
+    showMessage("");
+  });
+
+
+  // CADASTRO COM E-MAIL E SENHA
+  document.getElementById("register").addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const email = document.getElementById("registerEmail").value.trim();
+    const password = document.getElementById("registerPassword").value;
+    const button = document.getElementById("registerButton");
+
+    button.disabled = true;
+    button.textContent = "Criando conta...";
+
+    try {
+      const result = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      await saveUser(result.user);
+
+      showMessage("Conta criada e registrada com sucesso!", true);
+
+    } catch (error) {
+      console.error(error);
+      showMessage(
+        error.code ? translateError(error) :
+        "Conta criada, mas não foi possível salvar o registro no banco. Verifique as regras do Firestore."
+      );
+
+    } finally {
+      button.disabled = false;
+      button.textContent = "Criar minha conta";
+    }
+  });
+
+
+  // LOGIN COM E-MAIL E SENHA
+  document.getElementById("login").addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value;
+    const button = document.getElementById("loginButton");
+
+    button.disabled = true;
+    button.textContent = "Entrando...";
+
+    try {
+      const result = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      await saveUser(result.user);
+
+      showMessage("Login realizado com sucesso!", true);
+
+    } catch (error) {
+      console.error(error);
+      showMessage(
+        error.code ? translateError(error) :
+        "Login realizado, mas não foi possível salvar o registro. Verifique as regras do Firestore."
+      );
+
+    } finally {
+      button.disabled = false;
+      button.textContent = "Entrar";
+    }
+  });
+
+
+  // LOGIN COM GOOGLE
+  document.getElementById("googleButton").addEventListener("click", async () => {
+    const button = document.getElementById("googleButton");
+
+    button.disabled = true;
+    button.textContent = "Conectando ao Google...";
+
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+
+      await saveUser(result.user);
+
+      showMessage("Login Google realizado com sucesso!", true);
+
+    } catch (error) {
+      console.error(error);
+      showMessage(translateError(error));
+
+    } finally {
+      button.disabled = false;
+      button.textContent = "Entrar com Google";
+    }
+  });
+
+
+  // MOSTRAR ESTADO DA CONTA
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      authArea.classList.add("hidden");
+      userArea.classList.remove("hidden");
+
+      document.getElementById("userEmail").textContent = user.email || "";
+
+    } else {
+      authArea.classList.remove("hidden");
+      userArea.classList.add("hidden");
+    }
+  });
+
+
+  // SAIR DA CONTA
+  document.getElementById("logoutButton").addEventListener("click", async () => {
+    try {
+      await signOut(auth);
+      showMessage("Você saiu da sua conta.", true);
+    } catch (error) {
+      console.error(error);
+      showMessage("Não foi possível sair da conta.");
+    }
+  });
+
+
+  // CONTAGEM REGRESSIVA GLOBAL
+  const launchDate = new Date("2026-11-22T21:12:00-03:00").getTime();
+
+  function updateCountdown() {
+    const now = Date.now();
+    const distance = launchDate - now;
+    const timer = document.getElementById("timer");
+
+    if (distance <= 0) {
+      timer.textContent = "O lançamento chegou!";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((distance / (1000 * 60)) % 60);
+    const seconds = Math.floor((distance / 1000) % 60);
+
+    timer.textContent =
+      `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+</script>
+
+</body>
+</html>
+
