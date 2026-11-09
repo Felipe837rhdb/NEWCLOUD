@@ -2,257 +2,244 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#101827">
-  <title>NuvionCloud - Admin</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101827">
+<title>NuvionCloud | Admin</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
 
-    body {
-      background: #101827;
-      color: white;
-      min-height: 100vh;
-    }
+body {
+  background: #101827;
+  color: white;
+  min-height: 100vh;
+}
 
-    header {
-      height: 75px;
-      padding: 0 6%;
-      border-bottom: 1px solid #29394e;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+header {
+  padding: 22px 6%;
+  border-bottom: 1px solid #29394e;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    .brand {
-      font-size: 23px;
-      font-weight: bold;
-    }
+.brand {
+  font-size: 23px;
+  font-weight: bold;
+}
 
-    .brand span {
-      color: #3996ff;
-    }
+.brand span {
+  color: #3996ff;
+}
 
-    .admin-label {
-      font-size: 12px;
-      color: #3996ff;
-      background: #172d48;
-      padding: 8px 12px;
-      border-radius: 20px;
-    }
+.tag {
+  background: #172d48;
+  color: #3996ff;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+}
 
-    main {
-      max-width: 1100px;
-      padding: 40px 20px;
-      margin: auto;
-    }
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 35px 18px;
+}
 
-    .panel {
-      background: #172337;
-      border: 1px solid #2b3d55;
-      border-radius: 15px;
-      padding: 28px;
-      margin-bottom: 22px;
-    }
+.panel {
+  background: #172337;
+  border: 1px solid #2b3d55;
+  padding: 25px;
+  border-radius: 14px;
+  margin-bottom: 22px;
+}
 
-    h1 {
-      font-size: 27px;
-      margin-bottom: 10px;
-    }
+h1 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
 
-    h2 {
-      font-size: 19px;
-      margin-bottom: 8px;
-    }
+h2 {
+  font-size: 19px;
+  margin-bottom: 8px;
+}
 
-    .muted {
-      color: #93a4ba;
-      font-size: 14px;
-      line-height: 1.6;
-    }
+.muted {
+  color: #93a4ba;
+  font-size: 13px;
+  line-height: 1.6;
+}
 
-    input {
-      width: 100%;
-      padding: 14px;
-      margin-top: 15px;
-      background: #101827;
-      color: white;
-      border: 1px solid #344861;
-      border-radius: 8px;
-      outline: none;
-    }
+input {
+  width: 100%;
+  padding: 14px;
+  background: #101827;
+  border: 1px solid #344861;
+  border-radius: 8px;
+  color: white;
+  outline: none;
+  margin-top: 14px;
+}
 
-    input:focus {
-      border-color: #3996ff;
-    }
+input:focus {
+  border-color: #3996ff;
+}
 
-    button {
-      border: none;
-      padding: 12px 17px;
-      background: #3996ff;
-      color: white;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
-    }
+button {
+  border: none;
+  padding: 13px 17px;
+  background: #3996ff;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
 
-    button:hover {
-      opacity: .9;
-    }
+button:disabled {
+  opacity: .5;
+  cursor: wait;
+}
 
-    button:disabled {
-      opacity: .5;
-      cursor: wait;
-    }
+button:hover {
+  opacity: .9;
+}
 
-    .login-button {
-      width: 100%;
-      margin-top: 14px;
-    }
+.login-button {
+  width: 100%;
+  margin-top: 15px;
+}
 
-    .logout {
-      background: #29394e;
-    }
+.logout {
+  background: #29394e;
+}
 
-    .toolbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
 
-    .toolbar-buttons {
-      display: flex;
-      gap: 10px;
-    }
+.actions {
+  display: flex;
+  gap: 10px;
+}
 
-    .search {
-      max-width: 350px;
-      margin-top: 0;
-    }
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 25px;
+}
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      margin-top: 22px;
-    }
+.stat {
+  background: #101827;
+  border: 1px solid #2b3d55;
+  padding: 20px;
+  border-radius: 10px;
+}
 
-    .stat {
-      padding: 20px;
-      background: #101827;
-      border: 1px solid #2b3d55;
-      border-radius: 10px;
-    }
+.stat strong {
+  display: block;
+  color: #3996ff;
+  font-size: 28px;
+  margin-top: 8px;
+}
 
-    .stat strong {
-      display: block;
-      color: #3996ff;
-      font-size: 27px;
-      margin-top: 8px;
-    }
+.table-wrap {
+  overflow-x: auto;
+  margin-top: 20px;
+}
 
-    .table-wrap {
-      overflow-x: auto;
-      margin-top: 18px;
-    }
+table {
+  width: 100%;
+  min-width: 650px;
+  border-collapse: collapse;
+  text-align: left;
+}
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 650px;
-      text-align: left;
-    }
+th, td {
+  padding: 15px 12px;
+  border-bottom: 1px solid #29394e;
+  font-size: 13px;
+}
 
-    th, td {
-      padding: 15px 12px;
-      border-bottom: 1px solid #29394e;
-      font-size: 13px;
-    }
+th {
+  color: #93a4ba;
+}
 
-    th {
-      color: #91a6c0;
-      font-weight: normal;
-    }
+.uid {
+  color: #93a4ba;
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
 
-    td {
-      color: #e1eaf5;
-    }
+#loginMessage {
+  margin-top: 16px;
+  color: #ffaaaa;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
 
-    .uid {
-      color: #93a4ba;
-      font-size: 11px;
-      overflow-wrap: anywhere;
-      max-width: 180px;
-    }
+#tableMessage {
+  margin-top: 15px;
+}
 
-    #message {
-      margin-top: 15px;
-      font-size: 13px;
-      color: #ffaaaa;
-      overflow-wrap: anywhere;
-    }
+.hidden {
+  display: none !important;
+}
 
-    .hidden {
-      display: none !important;
-    }
+.empty {
+  text-align: center;
+  padding: 30px;
+  color: #93a4ba;
+}
 
-    .empty {
-      text-align: center;
-      padding: 35px;
-      color: #93a4ba;
-    }
+@media(max-width: 600px) {
+  header {
+    padding: 20px;
+  }
 
-    @media(max-width: 600px) {
-      header {
-        padding: 0 18px;
-      }
+  main {
+    padding: 22px 12px;
+  }
 
-      main {
-        padding: 25px 12px;
-      }
+  .panel {
+    padding: 18px;
+  }
 
-      .panel {
-        padding: 19px;
-      }
+  .stats {
+    grid-template-columns: 1fr;
+  }
 
-      .stats {
-        grid-template-columns: 1fr;
-      }
+  .toolbar {
+    align-items: stretch;
+  }
 
-      .toolbar {
-        align-items: stretch;
-      }
+  .actions {
+    width: 100%;
+  }
 
-      .toolbar-buttons {
-        width: 100%;
-      }
-
-      .toolbar-buttons button {
-        flex: 1;
-      }
-
-      .search {
-        max-width: 100%;
-        width: 100%;
-      }
-    }
-  </style>
+  .actions button {
+    flex: 1;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header>
   <div class="brand">☁ Nuvion<span>Cloud</span></div>
-  <div class="admin-label">ADMINISTRAÇÃO</div>
+  <div class="tag">ADMINISTRAÇÃO</div>
 </header>
 
 <main>
@@ -260,9 +247,7 @@
   <!-- LOGIN -->
   <section id="loginArea" class="panel">
     <h1>Painel administrativo</h1>
-    <p class="muted">
-      Entre com a conta administrativa do NuvionCloud.
-    </p>
+    <p class="muted">Entre com sua conta de administrador.</p>
 
     <form id="loginForm">
       <input
@@ -281,7 +266,7 @@
         required
       >
 
-      <button class="login-button" id="loginButton" type="submit">
+      <button id="loginButton" class="login-button" type="submit">
         Entrar no painel
       </button>
     </form>
@@ -290,17 +275,17 @@
   </section>
 
 
-  <!-- PAINEL -->
+  <!-- DASHBOARD -->
   <section id="dashboard" class="hidden">
 
     <div class="panel">
       <div class="toolbar">
         <div>
           <h1>Visão geral</h1>
-          <p class="muted">Gerenciamento de usuários cadastrados.</p>
+          <p class="muted">Gerenciamento de usuários.</p>
         </div>
 
-        <div class="toolbar-buttons">
+        <div class="actions">
           <button id="refreshButton">↻ Atualizar</button>
           <button class="logout" id="logoutButton">Sair</button>
         </div>
@@ -315,7 +300,7 @@
         </div>
 
         <div class="stat">
-          <span class="muted">Registros encontrados</span>
+          <span class="muted">Encontrados</span>
           <strong id="visibleUsers">0</strong>
         </div>
       </div>
@@ -323,21 +308,16 @@
 
 
     <div class="panel">
-      <div class="toolbar">
-        <div>
-          <h2>Usuários cadastrados</h2>
-          <p class="muted">E-mails registrados pelo site principal.</p>
-        </div>
-      </div>
+      <h2>Usuários cadastrados</h2>
+      <p class="muted">Registros armazenados no Firestore.</p>
 
       <input
         type="search"
         id="searchInput"
-        class="search"
-        placeholder="Pesquisar por e-mail ou UID..."
+        placeholder="Pesquisar e-mail ou UID..."
       >
 
-      <div id="tableMessage" class="muted"></div>
+      <p class="muted" id="tableMessage"></p>
 
       <div class="table-wrap">
         <table>
@@ -348,7 +328,6 @@
               <th>Último login</th>
             </tr>
           </thead>
-
           <tbody id="usersTable"></tbody>
         </table>
       </div>
@@ -365,243 +344,329 @@
 
 <script type="module">
 
-  // FIREBASE AUTHENTICATION
-  import {
-    initializeApp
-  } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
+// IMPORTAÇÕES FIREBASE
 
-  import {
-    getAuth,
-    signInWithEmailAndPassword,
-    onAuthStateChanged,
-    signOut
-  } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
+import { initializeApp } from
+"https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
 
-  // FIRESTORE
-  import {
-    getFirestore,
-    collection,
-    getDocs
-  } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
+} from
+"https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  getDocs
+} from
+"https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
 
 
-  // CONFIGURAÇÃO FIREBASE
-  const firebaseConfig = {
-    apiKey: "AIzaSyD-fg6OjiInXJBZJwfPF7iJ-6ZY6_CzSxY",
-    authDomain: "nuvioncloud.firebaseapp.com",
-    projectId: "nuvioncloud",
-    storageBucket: "nuvioncloud.firebasestorage.app",
-    messagingSenderId: "238265616692",
-    appId: "1:238265616692:web:88d6c38c8443169ffd7d61"
+// CONFIGURAÇÃO DO PROJETO
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD-fg6OjiInXJBZJwfPF7iJ-6ZY6_CzSxY",
+  authDomain: "nuvioncloud.firebaseapp.com",
+  projectId: "nuvioncloud",
+  storageBucket: "nuvioncloud.firebasestorage.app",
+  messagingSenderId: "238265616692",
+  appId: "1:238265616692:web:88d6c38c8443169ffd7d61"
+};
+
+
+// UID DO ADMINISTRADOR
+
+const ADMIN_UID = "7xeOkdeRaPXUkOA0A6Dvz9o1Ctr2";
+
+
+// INICIALIZAÇÃO
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+
+// ELEMENTOS
+
+const loginArea = document.getElementById("loginArea");
+const dashboard = document.getElementById("dashboard");
+const loginMessage = document.getElementById("loginMessage");
+const tableMessage = document.getElementById("tableMessage");
+const usersTable = document.getElementById("usersTable");
+
+let allUsers = [];
+
+
+// MOSTRAR LOGIN
+
+function showLogin() {
+  loginArea.classList.remove("hidden");
+  dashboard.classList.add("hidden");
+}
+
+
+// MOSTRAR PAINEL
+
+function showDashboard(user) {
+  loginArea.classList.add("hidden");
+  dashboard.classList.remove("hidden");
+
+  document.getElementById("adminEmail").textContent =
+    "Administrador: " + (user.email || "");
+}
+
+
+// FORMATAÇÃO DE ERRO
+
+function showFirebaseError(error) {
+  console.error("ERRO FIREBASE:", error);
+
+  const messages = {
+    "auth/invalid-credential":
+      "E-mail ou senha incorretos.",
+
+    "auth/user-not-found":
+      "Conta não encontrada.",
+
+    "auth/wrong-password":
+      "Senha incorreta.",
+
+    "auth/invalid-email":
+      "E-mail inválido.",
+
+    "auth/too-many-requests":
+      "Muitas tentativas. Aguarde alguns minutos.",
+
+    "auth/operation-not-allowed":
+      "Login por e-mail e senha não está ativado.",
+
+    "auth/network-request-failed":
+      "Falha de conexão com o Firebase.",
+
+    "auth/unauthorized-domain":
+      "Este domínio não está autorizado no Firebase.",
+
+    "permission-denied":
+      "O Firestore negou acesso. Confira suas regras."
   };
 
-
-  // UID AUTORIZADO DO ADMINISTRADOR
-  const ADMIN_UID = "7xeOkdeRaPXUkOA0A6Dvz9o1Ctr2";
-
-
-  // INICIALIZAR
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
+  loginMessage.textContent =
+    "Erro: " + error.code + " — " +
+    (messages[error.code] || error.message || "Erro desconhecido.");
+}
 
 
-  // ELEMENTOS
-  const loginArea = document.getElementById("loginArea");
-  const dashboard = document.getElementById("dashboard");
-  const loginMessage = document.getElementById("loginMessage");
-  const tableMessage = document.getElementById("tableMessage");
-  const usersTable = document.getElementById("usersTable");
-  const emptyMessage = document.getElementById("emptyMessage");
+// FORMATAR DATA
 
-  let allUsers = [];
-
-
-  // MOSTRAR LOGIN
-  function showLogin() {
-    loginArea.classList.remove("hidden");
-    dashboard.classList.add("hidden");
+function formatDate(timestamp) {
+  if (!timestamp || typeof timestamp.toDate !== "function") {
+    return "Não registrado";
   }
 
-
-  // MOSTRAR PAINEL
-  function showDashboard(user) {
-    loginArea.classList.add("hidden");
-    dashboard.classList.remove("hidden");
-
-    document.getElementById("adminEmail").textContent =
-      "Conectado como: " + (user.email || "Administrador");
-  }
+  return timestamp.toDate().toLocaleString("pt-BR");
+}
 
 
-  // FORMATAR DATA
-  function formatDate(timestamp) {
-    if (!timestamp || typeof timestamp.toDate !== "function") {
-      return "Não registrado";
-    }
+// MOSTRAR USUÁRIOS
 
-    return timestamp.toDate().toLocaleString("pt-BR");
-  }
+function renderUsers(users) {
+  usersTable.replaceChildren();
 
+  document.getElementById("totalUsers").textContent =
+    allUsers.length;
 
-  // RENDERIZAR USUÁRIOS
-  function renderUsers(users) {
-    usersTable.replaceChildren();
+  document.getElementById("visibleUsers").textContent =
+    users.length;
 
-    document.getElementById("totalUsers").textContent =
-      allUsers.length;
+  document.getElementById("emptyMessage")
+    .classList.toggle("hidden", users.length > 0);
 
-    document.getElementById("visibleUsers").textContent =
-      users.length;
+  users.forEach(user => {
+    const row = document.createElement("tr");
 
-    emptyMessage.classList.toggle("hidden", users.length !== 0);
+    const email = document.createElement("td");
+    email.textContent = user.email || "Sem e-mail";
 
-    users.forEach((user) => {
-      const tr = document.createElement("tr");
+    const uid = document.createElement("td");
+    uid.className = "uid";
+    uid.textContent = user.uid || "";
 
-      const emailCell = document.createElement("td");
-      emailCell.textContent = user.email || "Sem e-mail";
+    const date = document.createElement("td");
+    date.textContent = formatDate(user.lastLogin);
 
-      const uidCell = document.createElement("td");
-      uidCell.className = "uid";
-      uidCell.textContent = user.uid || "";
-
-      const dateCell = document.createElement("td");
-      dateCell.textContent = formatDate(user.lastLogin);
-
-      tr.append(emailCell, uidCell, dateCell);
-      usersTable.appendChild(tr);
-    });
-  }
+    row.append(email, uid, date);
+    usersTable.appendChild(row);
+  });
+}
 
 
-  // BUSCAR USUÁRIOS NO FIRESTORE
-  async function loadUsers() {
-    const button = document.getElementById("refreshButton");
+// CARREGAR USUÁRIOS
 
-    button.disabled = true;
-    button.textContent = "Carregando...";
-    tableMessage.textContent = "Buscando usuários...";
+async function loadUsers() {
+  const button = document.getElementById("refreshButton");
 
-    try {
-      const snapshot = await getDocs(collection(db, "users"));
+  button.disabled = true;
+  button.textContent = "Carregando...";
+  tableMessage.textContent = "Buscando usuários...";
 
-      allUsers = snapshot.docs.map((item) => ({
-        ...item.data(),
-        uid: item.id
-      }));
+  try {
+    const snapshot = await getDocs(collection(db, "users"));
 
-      allUsers.sort((a, b) => {
-        const dateA = a.lastLogin?.toMillis?.() || 0;
-        const dateB = b.lastLogin?.toMillis?.() || 0;
-        return dateB - dateA;
-      });
+    allUsers = snapshot.docs.map(item => ({
+      ...item.data(),
+      uid: item.id
+    }));
 
-      renderUsers(allUsers);
+    allUsers.sort((a, b) => {
+      const dateA = a.lastLogin?.toMillis?.() || 0;
+      const dateB = b.lastLogin?.toMillis?.() || 0;
 
-      tableMessage.textContent =
-        "Lista atualizada com sucesso.";
-
-    } catch (error) {
-      console.error(error);
-
-      tableMessage.textContent =
-        "Erro ao carregar usuários. Confira as regras do Firestore e o UID do administrador.";
-    } finally {
-      button.disabled = false;
-      button.textContent = "↻ Atualizar";
-    }
-  }
-
-
-  // PESQUISAR
-  document.getElementById("searchInput").addEventListener("input", (event) => {
-    const search = event.target.value.toLowerCase().trim();
-
-    const filtered = allUsers.filter((user) => {
-      return (
-        (user.email || "").toLowerCase().includes(search) ||
-        (user.uid || "").toLowerCase().includes(search)
-      );
+      return dateB - dateA;
     });
 
-    renderUsers(filtered);
-  });
+    renderUsers(allUsers);
+
+    tableMessage.textContent =
+      "Lista atualizada com sucesso.";
+
+  } catch (error) {
+    console.error("ERRO AO BUSCAR USUÁRIOS:", error);
+
+    tableMessage.textContent =
+      "Erro: " + error.code + " — " + error.message;
+
+  } finally {
+    button.disabled = false;
+    button.textContent = "↻ Atualizar";
+  }
+}
 
 
-  // LOGIN DO ADMINISTRADOR
-  document.getElementById("loginForm").addEventListener("submit", async (event) => {
-    event.preventDefault();
+// LOGIN ADMINISTRADOR
 
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
-    const button = document.getElementById("loginButton");
+document.getElementById("loginForm")
+.addEventListener("submit", async (event) => {
 
-    button.disabled = true;
-    button.textContent = "Verificando...";
+  event.preventDefault();
 
-    try {
-      const result = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
 
-      if (result.user.uid !== ADMIN_UID) {
-        await signOut(auth);
-        loginMessage.textContent =
-          "Acesso negado. Esta conta não é administradora.";
-      }
+  const button = document.getElementById("loginButton");
 
-    } catch (error) {
-      console.error(error);
+  loginMessage.textContent = "";
+  button.disabled = true;
+  button.textContent = "Verificando...";
 
-      loginMessage.textContent =
-        "Não foi possível entrar. Confira seu e-mail e senha.";
-    } finally {
-      button.disabled = false;
-      button.textContent = "Entrar no painel";
-    }
-  });
+  try {
+    const result = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
 
-
-  // VERIFICAR SESSÃO
-  onAuthStateChanged(auth, async (user) => {
-    if (!user) {
-      showLogin();
-      return;
-    }
-
-    if (user.uid !== ADMIN_UID) {
+    if (result.user.uid !== ADMIN_UID) {
       await signOut(auth);
+
       loginMessage.textContent =
-        "Acesso permitido somente ao administrador.";
-      showLogin();
+        "Acesso negado: UID não autorizado.";
+
       return;
     }
 
-    showDashboard(user);
-    await loadUsers();
-  });
+    loginMessage.textContent = "";
+
+  } catch (error) {
+    showFirebaseError(error);
+
+  } finally {
+    button.disabled = false;
+    button.textContent = "Entrar no painel";
+  }
+
+});
 
 
-  // ATUALIZAR
-  document.getElementById("refreshButton").addEventListener("click", () => {
-    if (auth.currentUser?.uid === ADMIN_UID) {
-      loadUsers();
-    }
-  });
+// VERIFICAR SESSÃO
 
+onAuthStateChanged(auth, async (user) => {
 
-  // SAIR
-  document.getElementById("logoutButton").addEventListener("click", async () => {
+  if (!user) {
+    showLogin();
+    return;
+  }
+
+  if (user.uid !== ADMIN_UID) {
     await signOut(auth);
+    showLogin();
+
+    loginMessage.textContent =
+      "Acesso permitido somente ao administrador.";
+
+    return;
+  }
+
+  showDashboard(user);
+  await loadUsers();
+
+});
+
+
+// PESQUISAR USUÁRIOS
+
+document.getElementById("searchInput")
+.addEventListener("input", (event) => {
+
+  const search = event.target.value.toLowerCase().trim();
+
+  const filtered = allUsers.filter(user => {
+
+    return (
+      (user.email || "").toLowerCase().includes(search) ||
+      (user.uid || "").toLowerCase().includes(search)
+    );
+
+  });
+
+  renderUsers(filtered);
+
+});
+
+
+// ATUALIZAR
+
+document.getElementById("refreshButton")
+.addEventListener("click", () => {
+
+  if (auth.currentUser?.uid === ADMIN_UID) {
+    loadUsers();
+  }
+
+});
+
+
+// SAIR
+
+document.getElementById("logoutButton")
+.addEventListener("click", async () => {
+
+  try {
+    await signOut(auth);
+
     document.getElementById("password").value = "";
     loginMessage.textContent = "";
-  });
+
+  } catch (error) {
+    console.error(error);
+    loginMessage.textContent = error.message;
+  }
+
+});
 
 </script>
 
 </body>
 </html>
-
